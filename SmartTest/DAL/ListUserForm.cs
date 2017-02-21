@@ -23,9 +23,10 @@ namespace SmartTest.DAL
 
         }
 
-        SqlConnection cnt = new SqlConnection(@"Data Source=DESKTOP-QD51D97\SQLEXPRESS;Initial Catalog=THI_TRAC_NGHIEM;Integrated Security=True");
+        
         private void KetNoiCSDL()
         {
+            SqlConnection cnt = new SqlConnection(@"Data Source=DESKTOP-QD51D97\SQLEXPRESS;Initial Catalog=THI_TRAC_NGHIEM;Integrated Security=True");
             try
             {
                 cnt.Open();

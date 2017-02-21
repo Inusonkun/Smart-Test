@@ -57,6 +57,7 @@
             this.btLogin.TabIndex = 1;
             this.btLogin.Text = "Đăng nhập";
             this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // lbUsername
             // 
@@ -83,6 +84,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(135, 20);
             this.txtUser.TabIndex = 4;
+            this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
             // 
             // txtPass
             // 
@@ -91,6 +93,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(135, 20);
             this.txtPass.TabIndex = 5;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // lbPassword
             // 

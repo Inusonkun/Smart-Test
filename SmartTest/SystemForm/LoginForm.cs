@@ -63,5 +63,24 @@ namespace SmartTest.SystemForm
             txtPass.SelectionStart = 0;
             txtPass.SelectionLength = txtPass.Text.Length;
         }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            if (txtUser.Text == "cuongtp" && txtPass.Text == "1234")
+            {
+                MessageBox.Show("Đăng nhập thành công!");
+                Main frm = new Main();
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Tên người dùng hoặc mật khẩu không hợp lệ! Hãy nhập lại!");
+            }
+        }
     }
 }

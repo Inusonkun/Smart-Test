@@ -14,3 +14,13 @@ E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\SmartTest\obj\Debug\SmartTest.D
 E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\bin\Debug\SmartTest.exe.config
 E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.exe
 E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.pdb
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\bin\Debug\SmartTest.exe
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\bin\Debug\SmartTest.pdb
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.csprojResolveAssemblyReference.cache
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.DAL.ListUserForm.resources
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.Main.resources
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.Properties.Resources.resources
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.SystemForm.ExitForm.resources
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.SystemForm.ListClassForm.resources
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.SystemForm.LoginForm.resources
+E:\Lap trinh c++\Tin Học Ngân Hàng\SmartTest\Smart-Test\SmartTest\obj\Debug\SmartTest.csproj.GenerateResource.Cache
