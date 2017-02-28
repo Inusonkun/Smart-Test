@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SmartTest.SO;
 using SmartTest.DAL;
+using System.Data.SqlClient;
 
 namespace SmartTest.SystemForm
 {
@@ -71,16 +72,19 @@ namespace SmartTest.SystemForm
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            if (txtUser.Text == "cuongtp" && txtPass.Text == "1234")
+           
+            string ketqua;
+            ketqua = Login.DangNhap(txtUser.Text, txtPass.Text);
+            if (ketqua == "Ngon")
             {
-                MessageBox.Show("Đăng nhập thành công!");
-                Main frm = new Main();
-                frm.ShowDialog();
+                PhanQuyen.ShowAll();
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Tên người dùng hoặc mật khẩu không hợp lệ! Hãy nhập lại!");
+                MessageBox.Show(ketqua, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
     }
 }

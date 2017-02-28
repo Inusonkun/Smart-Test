@@ -41,7 +41,7 @@ namespace SmartTest.SO
         /// Biến Global chứa thông tin kết nối Db
         /// </summary>
         /// Host or IpAddress chứa DB
-        public static string gHostDB = "127.0.0.1"; //"PC\\MSSQLSERVER2012";
+        public static string gHostDB = @"INUSONKUN\SQLEXPRESS"; //"PC\\MSSQLSERVER2012";
 
         /// <summary>
         /// Port kết nối đến DB
@@ -51,17 +51,17 @@ namespace SmartTest.SO
         /// <summary>
         /// ServiceName or Connection_Data của 
         /// </summary>
-        public static string gServiceNameDB = "SmartTest";
+        public static string gServiceNameDB = "THI_TRAC_NGHIEM";
 
         /// <summary>
         /// User login vào DB
         /// </summary>
-        public static string gUserDB = "demo";
+        public static string gUserDB = "InuSonkun";
 
         /// <summary>
         /// Mật khẩu login vào DB
         /// </summary>
-        public static string gPwdDB = "demo1234";
+        public static string gPwdDB = "inusonkun246";
 
         /// <summary>
         /// Trạng thái kết nối

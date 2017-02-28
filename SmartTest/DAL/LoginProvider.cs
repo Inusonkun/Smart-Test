@@ -19,7 +19,7 @@ namespace SmartTest.DAL
             DataAccess dbA = new DataAccess();            
             MyApp.MSSQLConnectionString = MyApp.GetLoginMSSQL(host, servicename, userdb, pwddb);
             dbA.ConnectionString = MyApp.MSSQLConnectionString;
-            string sql = "SELECT code From [Users] WHERE code='" + username + "'";
+            string sql = "SELECT TenNguoiDung From [DANHSACHNGUOIDUNG] WHERE TenNguoiDung='" + username + "' and MatKhau = '" + password + "'";
             List<KeyValuePair<string, object>> ParaMeterCollection = new List<KeyValuePair<string, object>>();
             try
             {
@@ -35,6 +35,23 @@ namespace SmartTest.DAL
             return result;
         }
         #endregion
-
+        public static string DangNhap(string username, string password)
+        {
+            string ketqua = "";
+            DataAccess dbA = new DataAccess();
+            string sql = "SELECT TenNguoiDung From [DANHSACHNGUOIDUNG] WHERE TenNguoiDung ='" + username + "' and MatKhau ='" + password + "'";
+            DataSet ds = new DataSet();
+            ds = dbA.ExecuteAsDataSetSql(sql);
+            int count = ds.Tables[0].Rows.Count;
+            if (count == 0)
+            {
+                ketqua = "Không thành công";
+            }
+            else
+            {
+                ketqua = "Ngon";
+            }
+            return ketqua;
+        }
     }
 }
