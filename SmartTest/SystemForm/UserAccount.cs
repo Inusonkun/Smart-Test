@@ -24,13 +24,19 @@ namespace SmartTest.SystemForm
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-
+         
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
             groupBox1.Visible = true;
             this.Height = 360;
+            btAdd.Enabled = false;
+            btDelete.Enabled = false;
+            btEdit.Enabled = false;
+            btFind.Enabled = false;
+            btPrint.Enabled = false;
+            //dataGridView1.Rows.Add(txtbName.Text, txtbUserID.Text, txtStaffID.Text, txtTransaction.Text);
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -53,6 +59,7 @@ namespace SmartTest.SystemForm
         private void UserAccount_Load(object sender, EventArgs e)
         {
             this.Height = 230;
+            
         }
     }
 }
