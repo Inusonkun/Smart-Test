@@ -127,11 +127,11 @@ namespace SmartTest.SystemForm
                 Char vChangeAtLogon = cbChangePass.Checked ? 'Y' : 'N';
                 Int32 vMacCheck = ckbMacCheck.Checked ? 1 : 0;
 
-                string sql = "UPDATE [Users] SET Name ='" + txtbName.Text + "'," +
-                             "TransCodes ='" + txtTransaction.Text + "'," +
+                string sql = "UPDATE [DANHSACHUSERS] SET Name ='" + txtbName.Text + "'," +
+                             "TransactionCode ='" + txtTransaction.Text + "'," +
                              "TranRef ='" + txtTransaction.Text.Substring(0, 1) + "'," +
-                             "PWDCHGNextLogon ='" + vChangeAtLogon + "'," +
-                             "PWDExpiry_Date ='" + dateTimePicker1.Text + "'," +
+                             "ChangePass ='" + vChangeAtLogon + "'," +
+                             "Expiry_Date ='" + dateTimePicker1.Text + "'," +
                              "Staff_ID ='" + txtStaffID.Text + "'," +
                              "MAC_Check = " + vMacCheck + " " +
                              "WHERE code ='" + vCode + "'";
@@ -166,6 +166,12 @@ namespace SmartTest.SystemForm
 
         private void btAdd_Click(object sender, EventArgs e)
         {
+            groupBox1.Visible = true;
+            btAdd.Enabled = false;
+            btDelete.Enabled = false;
+            btEdit.Enabled = false;
+            btFind.Enabled = false;
+            btPrint.Enabled = true;
             ButtonClick = "Add";
             ViewMode();
             AlignCenterToScreen();
@@ -173,6 +179,12 @@ namespace SmartTest.SystemForm
 
         private void btEdit_Click(object sender, EventArgs e)
         {
+            groupBox1.Visible = true;
+            btAdd.Enabled = false;
+            btDelete.Enabled = false;
+            btEdit.Enabled = false;
+            btFind.Enabled = false;
+            btPrint.Enabled = true;
             ButtonClick = "Edit";
             ViewMode();
             AlignCenterToScreen();
@@ -192,6 +204,12 @@ namespace SmartTest.SystemForm
 
         private void btFind_Click(object sender, EventArgs e)
         {
+            groupBox1.Visible = true;
+            btAdd.Enabled = false;
+            btDelete.Enabled = false;
+            btEdit.Enabled = false;
+            btFind.Enabled = false;
+            btPrint.Enabled = true;
             ButtonClick = "Find";
             ViewMode();
             AlignCenterToScreen();
@@ -230,7 +248,7 @@ namespace SmartTest.SystemForm
                             //dataGridView1.DataSource = result;
 
                             DataAccess dbA = new DataAccess();
-                            string sql = "DELETE FROM [Users] " +
+                            string sql = "DELETE FROM [DANHSACHUSERS] " +
                                          "WHERE code ='" + _code + "'";
                             int _ok = dbA.ExecuteData(sql);
                             if (_ok > 0)
