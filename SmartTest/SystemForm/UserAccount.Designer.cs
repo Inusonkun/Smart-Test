@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Staff_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Expire_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChangePass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAC_Check = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btCancel = new System.Windows.Forms.Button();
@@ -56,6 +50,15 @@
             this.btPrint = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Staff_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransactionCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Open_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Expire_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChangePass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAC_Check = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ckbMacCheck = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -68,6 +71,8 @@
             this.Code,
             this.NameS,
             this.Staff_ID,
+            this.TransactionCode,
+            this.Open_Date,
             this.Expire_Date,
             this.ChangePass,
             this.MAC_Check});
@@ -76,44 +81,9 @@
             this.dataGridView1.Size = new System.Drawing.Size(643, 182);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Code
-            // 
-            this.Code.DataPropertyName = "Code";
-            this.Code.HeaderText = "Code";
-            this.Code.Name = "Code";
-            // 
-            // NameS
-            // 
-            this.NameS.DataPropertyName = "NameS";
-            this.NameS.HeaderText = "Name";
-            this.NameS.Name = "NameS";
-            // 
-            // Staff_ID
-            // 
-            this.Staff_ID.DataPropertyName = "Staff_ID";
-            this.Staff_ID.HeaderText = "Staff_ID";
-            this.Staff_ID.Name = "Staff_ID";
-            // 
-            // Expire_Date
-            // 
-            this.Expire_Date.DataPropertyName = "Expire_Date";
-            this.Expire_Date.HeaderText = "Expire_Date";
-            this.Expire_Date.Name = "Expire_Date";
-            // 
-            // ChangePass
-            // 
-            this.ChangePass.DataPropertyName = "ChangePass";
-            this.ChangePass.HeaderText = "Change Pass";
-            this.ChangePass.Name = "ChangePass";
-            // 
-            // MAC_Check
-            // 
-            this.MAC_Check.DataPropertyName = "MAC_Check";
-            this.MAC_Check.HeaderText = "MAC_Check";
-            this.MAC_Check.Name = "MAC_Check";
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ckbMacCheck);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.btCancel);
             this.groupBox1.Controls.Add(this.btCommit);
@@ -139,7 +109,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(256, 98);
+            this.dateTimePicker1.Location = new System.Drawing.Point(240, 98);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
             this.dateTimePicker1.TabIndex = 14;
@@ -162,11 +132,12 @@
             this.btCommit.TabIndex = 12;
             this.btCommit.Text = "Commit";
             this.btCommit.UseVisualStyleBackColor = true;
+            this.btCommit.Click += new System.EventHandler(this.btCommit_Click);
             // 
             // cbChangePass
             // 
             this.cbChangePass.AutoSize = true;
-            this.cbChangePass.Location = new System.Drawing.Point(400, 100);
+            this.cbChangePass.Location = new System.Drawing.Point(375, 100);
             this.cbChangePass.Name = "cbChangePass";
             this.cbChangePass.Size = new System.Drawing.Size(112, 17);
             this.cbChangePass.TabIndex = 10;
@@ -183,7 +154,7 @@
             // lbExpireDate
             // 
             this.lbExpireDate.AutoSize = true;
-            this.lbExpireDate.Location = new System.Drawing.Point(188, 101);
+            this.lbExpireDate.Location = new System.Drawing.Point(172, 101);
             this.lbExpireDate.Name = "lbExpireDate";
             this.lbExpireDate.Size = new System.Drawing.Size(62, 13);
             this.lbExpireDate.TabIndex = 7;
@@ -201,7 +172,7 @@
             // lbTransactionCode
             // 
             this.lbTransactionCode.AutoSize = true;
-            this.lbTransactionCode.Location = new System.Drawing.Point(397, 55);
+            this.lbTransactionCode.Location = new System.Drawing.Point(372, 55);
             this.lbTransactionCode.Name = "lbTransactionCode";
             this.lbTransactionCode.Size = new System.Drawing.Size(90, 13);
             this.lbTransactionCode.TabIndex = 5;
@@ -210,7 +181,7 @@
             // lbNameStaff
             // 
             this.lbNameStaff.AutoSize = true;
-            this.lbNameStaff.Location = new System.Drawing.Point(188, 55);
+            this.lbNameStaff.Location = new System.Drawing.Point(172, 55);
             this.lbNameStaff.Name = "lbNameStaff";
             this.lbNameStaff.Size = new System.Drawing.Size(35, 13);
             this.lbNameStaff.TabIndex = 4;
@@ -218,7 +189,7 @@
             // 
             // txtTransaction
             // 
-            this.txtTransaction.Location = new System.Drawing.Point(493, 55);
+            this.txtTransaction.Location = new System.Drawing.Point(468, 55);
             this.txtTransaction.Name = "txtTransaction";
             this.txtTransaction.Size = new System.Drawing.Size(100, 20);
             this.txtTransaction.TabIndex = 3;
@@ -226,7 +197,7 @@
             // 
             // txtbName
             // 
-            this.txtbName.Location = new System.Drawing.Point(259, 52);
+            this.txtbName.Location = new System.Drawing.Point(243, 52);
             this.txtbName.Name = "txtbName";
             this.txtbName.Size = new System.Drawing.Size(121, 20);
             this.txtbName.TabIndex = 2;
@@ -265,6 +236,7 @@
             this.btEdit.TabIndex = 3;
             this.btEdit.Text = "Edit";
             this.btEdit.UseVisualStyleBackColor = true;
+            this.btEdit.Click += new System.EventHandler(this.btEdit_Click);
             // 
             // btDelete
             // 
@@ -318,6 +290,64 @@
             this.panel1.Size = new System.Drawing.Size(101, 182);
             this.panel1.TabIndex = 2;
             // 
+            // Code
+            // 
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            // 
+            // NameS
+            // 
+            this.NameS.DataPropertyName = "NameS";
+            this.NameS.HeaderText = "Name";
+            this.NameS.Name = "NameS";
+            // 
+            // Staff_ID
+            // 
+            this.Staff_ID.DataPropertyName = "Staff_ID";
+            this.Staff_ID.HeaderText = "Staff_ID";
+            this.Staff_ID.Name = "Staff_ID";
+            // 
+            // TransactionCode
+            // 
+            this.TransactionCode.DataPropertyName = "TransactionCode";
+            this.TransactionCode.HeaderText = "Transaction Code";
+            this.TransactionCode.Name = "TransactionCode";
+            // 
+            // Open_Date
+            // 
+            this.Open_Date.DataPropertyName = "Open_Date";
+            this.Open_Date.HeaderText = "Open date";
+            this.Open_Date.Name = "Open_Date";
+            // 
+            // Expire_Date
+            // 
+            this.Expire_Date.DataPropertyName = "Expire_Date";
+            this.Expire_Date.HeaderText = "Expire_Date";
+            this.Expire_Date.Name = "Expire_Date";
+            // 
+            // ChangePass
+            // 
+            this.ChangePass.DataPropertyName = "ChangePass";
+            this.ChangePass.HeaderText = "Change Pass";
+            this.ChangePass.Name = "ChangePass";
+            // 
+            // MAC_Check
+            // 
+            this.MAC_Check.DataPropertyName = "MAC_Check";
+            this.MAC_Check.HeaderText = "MAC_Check";
+            this.MAC_Check.Name = "MAC_Check";
+            // 
+            // ckbMacCheck
+            // 
+            this.ckbMacCheck.AutoSize = true;
+            this.ckbMacCheck.Location = new System.Drawing.Point(518, 100);
+            this.ckbMacCheck.Name = "ckbMacCheck";
+            this.ckbMacCheck.Size = new System.Drawing.Size(83, 17);
+            this.ckbMacCheck.TabIndex = 15;
+            this.ckbMacCheck.Text = "MAC Check";
+            this.ckbMacCheck.UseVisualStyleBackColor = true;
+            // 
             // UserAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,8 +398,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Staff_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Open_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Expire_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChangePass;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAC_Check;
+        private System.Windows.Forms.CheckBox ckbMacCheck;
     }
 }
