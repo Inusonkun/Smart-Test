@@ -75,7 +75,7 @@ namespace SmartTest.SystemForm
         private void loadData(string _Filter = "")
         {
             DataAccess dbA = new DataAccess();
-            string sql = "SELECT Code, Name, Staff_ID, TransactionCode, Open_Date, Expiry_Date, ChangePass, MAC_Check FROM [DANHSACHUSERS]" + _Filter;
+            string sql = "SELECT Code, Name, Staff_ID, Expire_Date, ChangePass, MAC_Check, TransactionCode, Open_Date, FROM [DANHSACHUSERS]" + _Filter;
             try
             {
                 dt = dbA.ExecuteAsDataSetSql(sql);
@@ -97,8 +97,8 @@ namespace SmartTest.SystemForm
                 DataAccess dbA = new DataAccess();
                 Char vChangeAtLogon = cbChangePass.Checked ? 'Y' : 'N';
                 Int32 vMacCheck = ckbMacCheck.Checked ? 1 : 0;
-                string sql = "INSERT INTO Users(Code,Name,Staff_ID,TransactionCode,Open_Date, Expiry_Date,ChangePass,MAC_Check) " +
-                    "VALUES('" + txtbUserID.Text + "','" + txtbName.Text + "','','" + txtTransaction.Text + "','" + txtTransaction.Text.Substring(0, 1) + "','" + vChangeAtLogon + "','" + dateTimePicker1.Text + "','" + txtStaffID.Text + "'," + vMacCheck + ", '" + DateTime.Today.ToString("yyyy-MM-dd") + "') ";
+                string sql = "INSERT INTO DANHSACHUSERS(Code,Name, Staff_ID, Open_Date, Expire_Date, Depno, TranRef, TransactionCode, ChangePass,MAC_Check) " +
+                    "VALUES('" + txtbUserID.Text + "','" + txtbName.Text + "','','" + txtTransaction.Text + "','" + txtTransaction.Text.Substring(0, 1) + "','" + vChangeAtLogon + "','" + dateTimePicker1.Text + "','" + txtStaffID.Text + "'," + vMacCheck + ", '" + DateTime.Today.ToString("yyyy_mm_dd") + "') ";
                 int i = dbA.ExecuteData(sql);
                 if (i > 0)
                 {
@@ -131,7 +131,7 @@ namespace SmartTest.SystemForm
                              "TransactionCode ='" + txtTransaction.Text + "'," +
                              "TranRef ='" + txtTransaction.Text.Substring(0, 1) + "'," +
                              "ChangePass ='" + vChangeAtLogon + "'," +
-                             "Expiry_Date ='" + dateTimePicker1.Text + "'," +
+                             "Expire_Date ='" + dateTimePicker1.Text + "'," +
                              "Staff_ID ='" + txtStaffID.Text + "'," +
                              "MAC_Check = " + vMacCheck + " " +
                              "WHERE code ='" + vCode + "'";
@@ -304,6 +304,12 @@ namespace SmartTest.SystemForm
                     // Do Something
                     break;
             }
+        }
+
+        private void btPrint_Click(object sender, EventArgs e)
+        {
+            ReportUAListForm rpf = new ReportUAListForm();
+            rpf.ShowDialog();
         }
     }
       

@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckbMacCheck = new System.Windows.Forms.CheckBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btCancel = new System.Windows.Forms.Button();
             this.btCommit = new System.Windows.Forms.Button();
@@ -53,12 +54,10 @@
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Staff_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Open_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expire_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChangePass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAC_Check = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ckbMacCheck = new System.Windows.Forms.CheckBox();
+            this.TransactionCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,11 +70,10 @@
             this.Code,
             this.NameS,
             this.Staff_ID,
-            this.TransactionCode,
-            this.Open_Date,
             this.Expire_Date,
             this.ChangePass,
-            this.MAC_Check});
+            this.MAC_Check,
+            this.TransactionCode});
             this.dataGridView1.Location = new System.Drawing.Point(-1, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(643, 182);
@@ -106,8 +104,19 @@
             this.groupBox1.Visible = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // ckbMacCheck
+            // 
+            this.ckbMacCheck.AutoSize = true;
+            this.ckbMacCheck.Location = new System.Drawing.Point(518, 100);
+            this.ckbMacCheck.Name = "ckbMacCheck";
+            this.ckbMacCheck.Size = new System.Drawing.Size(83, 17);
+            this.ckbMacCheck.TabIndex = 15;
+            this.ckbMacCheck.Text = "MAC Check";
+            this.ckbMacCheck.UseVisualStyleBackColor = true;
+            // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "yyyy_mm_dd";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(240, 98);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -266,6 +275,7 @@
             this.btPrint.TabIndex = 6;
             this.btPrint.Text = "Print";
             this.btPrint.UseVisualStyleBackColor = true;
+            this.btPrint.Click += new System.EventHandler(this.btPrint_Click);
             // 
             // btClose
             // 
@@ -308,18 +318,6 @@
             this.Staff_ID.HeaderText = "Staff_ID";
             this.Staff_ID.Name = "Staff_ID";
             // 
-            // TransactionCode
-            // 
-            this.TransactionCode.DataPropertyName = "TransactionCode";
-            this.TransactionCode.HeaderText = "Transaction Code";
-            this.TransactionCode.Name = "TransactionCode";
-            // 
-            // Open_Date
-            // 
-            this.Open_Date.DataPropertyName = "Open_Date";
-            this.Open_Date.HeaderText = "Open date";
-            this.Open_Date.Name = "Open_Date";
-            // 
             // Expire_Date
             // 
             this.Expire_Date.DataPropertyName = "Expire_Date";
@@ -338,15 +336,11 @@
             this.MAC_Check.HeaderText = "MAC_Check";
             this.MAC_Check.Name = "MAC_Check";
             // 
-            // ckbMacCheck
+            // TransactionCode
             // 
-            this.ckbMacCheck.AutoSize = true;
-            this.ckbMacCheck.Location = new System.Drawing.Point(518, 100);
-            this.ckbMacCheck.Name = "ckbMacCheck";
-            this.ckbMacCheck.Size = new System.Drawing.Size(83, 17);
-            this.ckbMacCheck.TabIndex = 15;
-            this.ckbMacCheck.Text = "MAC Check";
-            this.ckbMacCheck.UseVisualStyleBackColor = true;
+            this.TransactionCode.DataPropertyName = "TransactionCode";
+            this.TransactionCode.HeaderText = "Transaction Code";
+            this.TransactionCode.Name = "TransactionCode";
             // 
             // UserAccount
             // 
@@ -395,14 +389,13 @@
         private System.Windows.Forms.Button btCommit;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.CheckBox ckbMacCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Staff_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Open_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Expire_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChangePass;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAC_Check;
-        private System.Windows.Forms.CheckBox ckbMacCheck;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionCode;
     }
 }
