@@ -92,5 +92,17 @@ namespace SmartTest
             ExitForm frm = new ExitForm();
             frm.Show();
         }
+
+        private void DSUser_Click(object sender, EventArgs e)
+        {
+            UserAccount frm = new UserAccount();
+            frm.Show();
+        }
+
+        private void DSSV_Click(object sender, EventArgs e)
+        {
+            ListStudentForm frm = new ListStudentForm();
+            frm.ShowDialog();
+        }
     }
 }

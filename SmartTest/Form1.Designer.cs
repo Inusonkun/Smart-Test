@@ -108,6 +108,7 @@
             this.DSUser.Name = "DSUser";
             this.DSUser.Size = new System.Drawing.Size(201, 22);
             this.DSUser.Text = "Danh sách người sử dụng";
+            this.DSUser.Click += new System.EventHandler(this.DSUser_Click);
             // 
             // PhanQuyenUser
             // 
@@ -189,6 +190,7 @@
             this.DSSV.Name = "DSSV";
             this.DSSV.Size = new System.Drawing.Size(255, 22);
             this.DSSV.Text = "Danh sách sinh viên lớp học phần";
+            this.DSSV.Click += new System.EventHandler(this.DSSV_Click);
             // 
             // CapNhatDSSV
             // 
