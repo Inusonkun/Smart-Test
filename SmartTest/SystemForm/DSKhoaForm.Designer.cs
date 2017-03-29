@@ -33,21 +33,21 @@
             this.TenKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnControl = new System.Windows.Forms.Panel();
-            this.btAdd = new System.Windows.Forms.Button();
-            this.btEdit = new System.Windows.Forms.Button();
-            this.btDelete = new System.Windows.Forms.Button();
-            this.btFind = new System.Windows.Forms.Button();
-            this.btPrint = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
+            this.btPrint = new System.Windows.Forms.Button();
+            this.btFind = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
+            this.btEdit = new System.Windows.Forms.Button();
+            this.btAdd = new System.Windows.Forms.Button();
             this.grbDetail = new System.Windows.Forms.GroupBox();
-            this.lbMaKhoa = new System.Windows.Forms.Label();
-            this.lbTenKhoa = new System.Windows.Forms.Label();
-            this.lbGhiChu = new System.Windows.Forms.Label();
-            this.txtMaKhoa = new System.Windows.Forms.TextBox();
-            this.txtTenKhoa = new System.Windows.Forms.TextBox();
-            this.txtGhiChu = new System.Windows.Forms.TextBox();
-            this.btCommit = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
+            this.btCommit = new System.Windows.Forms.Button();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.txtTenKhoa = new System.Windows.Forms.TextBox();
+            this.txtMaKhoa = new System.Windows.Forms.TextBox();
+            this.lbGhiChu = new System.Windows.Forms.Label();
+            this.lbTenKhoa = new System.Windows.Forms.Label();
+            this.lbMaKhoa = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrDSKhoa)).BeginInit();
             this.pnControl.SuspendLayout();
             this.grbDetail.SuspendLayout();
@@ -64,21 +64,25 @@
             this.dtgrDSKhoa.Name = "dtgrDSKhoa";
             this.dtgrDSKhoa.Size = new System.Drawing.Size(404, 175);
             this.dtgrDSKhoa.TabIndex = 0;
+            this.dtgrDSKhoa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrDSKhoa_CellContentClick);
             // 
             // MaKhoa
             // 
+            this.MaKhoa.DataPropertyName = "MaKhoa";
             this.MaKhoa.HeaderText = "Mã khoa";
             this.MaKhoa.Name = "MaKhoa";
             this.MaKhoa.Width = 120;
             // 
             // TenKhoa
             // 
+            this.TenKhoa.DataPropertyName = "TenKhoa";
             this.TenKhoa.HeaderText = "Tên khoa";
             this.TenKhoa.Name = "TenKhoa";
             this.TenKhoa.Width = 120;
             // 
             // GhiChu
             // 
+            this.GhiChu.DataPropertyName = "GhiChu";
             this.GhiChu.HeaderText = "Ghi chú";
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.Width = 120;
@@ -96,41 +100,15 @@
             this.pnControl.Size = new System.Drawing.Size(82, 175);
             this.pnControl.TabIndex = 1;
             // 
-            // btAdd
+            // btClose
             // 
-            this.btAdd.Location = new System.Drawing.Point(0, 3);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(75, 23);
-            this.btAdd.TabIndex = 0;
-            this.btAdd.Text = "Thêm";
-            this.btAdd.UseVisualStyleBackColor = true;
-            // 
-            // btEdit
-            // 
-            this.btEdit.Location = new System.Drawing.Point(0, 32);
-            this.btEdit.Name = "btEdit";
-            this.btEdit.Size = new System.Drawing.Size(75, 23);
-            this.btEdit.TabIndex = 1;
-            this.btEdit.Text = "Sửa";
-            this.btEdit.UseVisualStyleBackColor = true;
-            // 
-            // btDelete
-            // 
-            this.btDelete.Location = new System.Drawing.Point(0, 61);
-            this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(75, 23);
-            this.btDelete.TabIndex = 2;
-            this.btDelete.Text = "Xóa";
-            this.btDelete.UseVisualStyleBackColor = true;
-            // 
-            // btFind
-            // 
-            this.btFind.Location = new System.Drawing.Point(0, 91);
-            this.btFind.Name = "btFind";
-            this.btFind.Size = new System.Drawing.Size(75, 23);
-            this.btFind.TabIndex = 3;
-            this.btFind.Text = "Tìm";
-            this.btFind.UseVisualStyleBackColor = true;
+            this.btClose.Location = new System.Drawing.Point(0, 149);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(75, 23);
+            this.btClose.TabIndex = 5;
+            this.btClose.Text = "Đóng";
+            this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
             // btPrint
             // 
@@ -141,14 +119,43 @@
             this.btPrint.Text = "In";
             this.btPrint.UseVisualStyleBackColor = true;
             // 
-            // btClose
+            // btFind
             // 
-            this.btClose.Location = new System.Drawing.Point(0, 149);
-            this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(75, 23);
-            this.btClose.TabIndex = 5;
-            this.btClose.Text = "Đóng";
-            this.btClose.UseVisualStyleBackColor = true;
+            this.btFind.Location = new System.Drawing.Point(0, 91);
+            this.btFind.Name = "btFind";
+            this.btFind.Size = new System.Drawing.Size(75, 23);
+            this.btFind.TabIndex = 3;
+            this.btFind.Text = "Tìm";
+            this.btFind.UseVisualStyleBackColor = true;
+            // 
+            // btDelete
+            // 
+            this.btDelete.Location = new System.Drawing.Point(0, 61);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(75, 23);
+            this.btDelete.TabIndex = 2;
+            this.btDelete.Text = "Xóa";
+            this.btDelete.UseVisualStyleBackColor = true;
+            // 
+            // btEdit
+            // 
+            this.btEdit.Location = new System.Drawing.Point(0, 32);
+            this.btEdit.Name = "btEdit";
+            this.btEdit.Size = new System.Drawing.Size(75, 23);
+            this.btEdit.TabIndex = 1;
+            this.btEdit.Text = "Sửa";
+            this.btEdit.UseVisualStyleBackColor = true;
+            this.btEdit.Click += new System.EventHandler(this.btEdit_Click);
+            // 
+            // btAdd
+            // 
+            this.btAdd.Location = new System.Drawing.Point(0, 3);
+            this.btAdd.Name = "btAdd";
+            this.btAdd.Size = new System.Drawing.Size(75, 23);
+            this.btAdd.TabIndex = 0;
+            this.btAdd.Text = "Thêm";
+            this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // grbDetail
             // 
@@ -166,24 +173,48 @@
             this.grbDetail.TabIndex = 2;
             this.grbDetail.TabStop = false;
             this.grbDetail.Text = "Chi tiết";
+            this.grbDetail.Enter += new System.EventHandler(this.grbDetail_Enter);
             // 
-            // lbMaKhoa
+            // btCancel
             // 
-            this.lbMaKhoa.AutoSize = true;
-            this.lbMaKhoa.Location = new System.Drawing.Point(6, 19);
-            this.lbMaKhoa.Name = "lbMaKhoa";
-            this.lbMaKhoa.Size = new System.Drawing.Size(49, 13);
-            this.lbMaKhoa.TabIndex = 0;
-            this.lbMaKhoa.Text = "Mã khoa";
+            this.btCancel.Location = new System.Drawing.Point(410, 43);
+            this.btCancel.Name = "btCancel";
+            this.btCancel.Size = new System.Drawing.Size(75, 23);
+            this.btCancel.TabIndex = 7;
+            this.btCancel.Text = "Hủy";
+            this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
-            // lbTenKhoa
+            // btCommit
             // 
-            this.lbTenKhoa.AutoSize = true;
-            this.lbTenKhoa.Location = new System.Drawing.Point(159, 19);
-            this.lbTenKhoa.Name = "lbTenKhoa";
-            this.lbTenKhoa.Size = new System.Drawing.Size(53, 13);
-            this.lbTenKhoa.TabIndex = 1;
-            this.lbTenKhoa.Text = "Tên khoa";
+            this.btCommit.Location = new System.Drawing.Point(410, 13);
+            this.btCommit.Name = "btCommit";
+            this.btCommit.Size = new System.Drawing.Size(75, 23);
+            this.btCommit.TabIndex = 6;
+            this.btCommit.Text = "Ghi nhận";
+            this.btCommit.UseVisualStyleBackColor = true;
+            this.btCommit.Click += new System.EventHandler(this.btCommit_Click);
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(61, 43);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(343, 20);
+            this.txtGhiChu.TabIndex = 5;
+            // 
+            // txtTenKhoa
+            // 
+            this.txtTenKhoa.Location = new System.Drawing.Point(218, 16);
+            this.txtTenKhoa.Name = "txtTenKhoa";
+            this.txtTenKhoa.Size = new System.Drawing.Size(186, 20);
+            this.txtTenKhoa.TabIndex = 4;
+            // 
+            // txtMaKhoa
+            // 
+            this.txtMaKhoa.Location = new System.Drawing.Point(61, 16);
+            this.txtMaKhoa.Name = "txtMaKhoa";
+            this.txtMaKhoa.Size = new System.Drawing.Size(92, 20);
+            this.txtMaKhoa.TabIndex = 3;
             // 
             // lbGhiChu
             // 
@@ -194,44 +225,23 @@
             this.lbGhiChu.TabIndex = 2;
             this.lbGhiChu.Text = "Ghi chú";
             // 
-            // txtMaKhoa
+            // lbTenKhoa
             // 
-            this.txtMaKhoa.Location = new System.Drawing.Point(61, 16);
-            this.txtMaKhoa.Name = "txtMaKhoa";
-            this.txtMaKhoa.Size = new System.Drawing.Size(92, 20);
-            this.txtMaKhoa.TabIndex = 3;
+            this.lbTenKhoa.AutoSize = true;
+            this.lbTenKhoa.Location = new System.Drawing.Point(159, 19);
+            this.lbTenKhoa.Name = "lbTenKhoa";
+            this.lbTenKhoa.Size = new System.Drawing.Size(53, 13);
+            this.lbTenKhoa.TabIndex = 1;
+            this.lbTenKhoa.Text = "Tên khoa";
             // 
-            // txtTenKhoa
+            // lbMaKhoa
             // 
-            this.txtTenKhoa.Location = new System.Drawing.Point(218, 16);
-            this.txtTenKhoa.Name = "txtTenKhoa";
-            this.txtTenKhoa.Size = new System.Drawing.Size(186, 20);
-            this.txtTenKhoa.TabIndex = 4;
-            // 
-            // txtGhiChu
-            // 
-            this.txtGhiChu.Location = new System.Drawing.Point(61, 43);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(343, 20);
-            this.txtGhiChu.TabIndex = 5;
-            // 
-            // btCommit
-            // 
-            this.btCommit.Location = new System.Drawing.Point(410, 13);
-            this.btCommit.Name = "btCommit";
-            this.btCommit.Size = new System.Drawing.Size(75, 23);
-            this.btCommit.TabIndex = 6;
-            this.btCommit.Text = "Ghi nhận";
-            this.btCommit.UseVisualStyleBackColor = true;
-            // 
-            // btCancel
-            // 
-            this.btCancel.Location = new System.Drawing.Point(410, 43);
-            this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(75, 23);
-            this.btCancel.TabIndex = 7;
-            this.btCancel.Text = "Hủy";
-            this.btCancel.UseVisualStyleBackColor = true;
+            this.lbMaKhoa.AutoSize = true;
+            this.lbMaKhoa.Location = new System.Drawing.Point(6, 19);
+            this.lbMaKhoa.Name = "lbMaKhoa";
+            this.lbMaKhoa.Size = new System.Drawing.Size(49, 13);
+            this.lbMaKhoa.TabIndex = 0;
+            this.lbMaKhoa.Text = "Mã khoa";
             // 
             // DSKhoaForm
             // 
@@ -244,6 +254,7 @@
             this.Name = "DSKhoaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh s¸ch khoa";
+            this.Load += new System.EventHandler(this.DSKhoaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrDSKhoa)).EndInit();
             this.pnControl.ResumeLayout(false);
             this.grbDetail.ResumeLayout(false);
@@ -255,9 +266,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dtgrDSKhoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenKhoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.Panel pnControl;
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Button btPrint;
@@ -274,5 +282,8 @@
         private System.Windows.Forms.Label lbGhiChu;
         private System.Windows.Forms.Label lbTenKhoa;
         private System.Windows.Forms.Label lbMaKhoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenKhoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
     }
 }
