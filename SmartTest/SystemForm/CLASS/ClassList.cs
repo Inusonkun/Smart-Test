@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SmartTest.SystemForm
+namespace SmartTest.SystemForm.CLASS
 {
-    public partial class ListClassForm : Form
+    public partial class ClassList : Form
     {
-        public ListClassForm()
+        public ClassList()
         {
             InitializeComponent();
         }
+
+        
     }
 }
