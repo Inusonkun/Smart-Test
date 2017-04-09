@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartTest.SystemForm.Subject
+namespace SmartTest.SystemForm.SUBJECT
 {
     public class Class_Subject
     {
         public string MaMon { get; set; }
 
         public string TenMon { get; set; }
-        public string GhiChu { get; set; }
+        public string Khoa { get; set; }
+      
+        //public string NhanVienCoiThi { get; set; }
     }
 
     public static class SubjectExtension
@@ -21,25 +23,23 @@ namespace SmartTest.SystemForm.Subject
             var parameters = new List<KeyValuePair<string, object>>();
             parameters.Add(new KeyValuePair<string, object>("MaMon", sj.MaMon));
             parameters.Add(new KeyValuePair<string, object>("TenMon", sj.TenMon));
-            parameters.Add(new KeyValuePair<string, object>("Ghichu", sj.GhiChu));
+            parameters.Add(new KeyValuePair<string, object>("Khoa", sj.Khoa));
+            //parameters.Add(new KeyValuePair<string, object>("NhanVienCoiThi", sj.NhanVienCoiThi));
 
             return parameters;
         }
 
         public static string ToInsertQuery(this Class_Subject sj)
         {
-            return @"INSERT INTO DANHSACHMONTHI(MaMon, TenMon, GhiChu) VALUES (@MaMon, @TenMon, @GhiChu)";
+            return @"INSERT INTO DANHSACHMONTHI(MaMon, TenMon, Khoa) VALUES (@MaMon, @TenMon, @Khoa)";
         }
 
         public static string ToUpdateQuery(this Class_Subject sj)
         {
             return @"UPDATE DANHSACHMONTHI
-                    SET TenMon = @TenMon, GhiChu = @GhiChu WHERE MaMon = @MaMon";
+                    SET TenMon = @TenMon, Khoa = @Khoa WHERE MaMon = @MaMon";
         }
 
-        public static string ToDeleteQuery(this Class_Subject sj)
-        {
-            return @"DELETE FROM DANHSACHMONTHI WHERE MaMon= @MaMon";
-        }
+  
     }
 }

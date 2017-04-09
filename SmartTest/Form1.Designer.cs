@@ -184,6 +184,7 @@
             this.DSKhoaMon.Name = "DSKhoaMon";
             this.DSKhoaMon.Size = new System.Drawing.Size(255, 22);
             this.DSKhoaMon.Text = "Danh sách Khoa - Bộ môn";
+            this.DSKhoaMon.Click += new System.EventHandler(this.DSKhoaMon_Click);
             // 
             // DSSV
             // 
@@ -245,6 +246,7 @@
             this.DMCanBo.Name = "DMCanBo";
             this.DMCanBo.Size = new System.Drawing.Size(186, 22);
             this.DMCanBo.Text = "Danh mục cán bộ";
+            this.DMCanBo.Click += new System.EventHandler(this.DMCanBo_Click);
             // 
             // DMPhongBan
             // 

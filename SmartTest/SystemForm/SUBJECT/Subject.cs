@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SmartTest.DAL;
+using System.Data.SqlClient;
+using SmartTest.SystemForm.STAFF;
+using SmartTest.SystemForm.CLASS;
 
-namespace SmartTest.SystemForm.Subject
+namespace SmartTest.SystemForm.SUBJECT
 {
     public partial class Subject : Form
     {
         DataAccess da;
         string ButtonClick = "";
+        DataSet dt = new DataSet();
+
+        public string MaSo { set; get; }
         public Subject()
         {
             InitializeComponent();
@@ -29,7 +35,7 @@ namespace SmartTest.SystemForm.Subject
                 case "Thêm":
                     txtSubjectID.Text = "";
                     txtSubjectName.Text = "";
-                    txtNote.Text = "";
+                    txtKhoa.Text = "";                    
                     grbDetail.Enabled = true;
                     this.Height = 395;
                     break;
@@ -38,7 +44,7 @@ namespace SmartTest.SystemForm.Subject
                     this.Height = 395;
                     txtSubjectID.Text = dtgrvSubject.CurrentRow.Cells[0].Value.ToString();
                     txtSubjectName.Text = dtgrvSubject.CurrentRow.Cells[1].Value.ToString();
-                    txtNote.Text = dtgrvSubject.CurrentRow.Cells[2].Value.ToString();
+                    txtKhoa.Text = dtgrvSubject.CurrentRow.Cells[2].Value.ToString();
                     break;
                 case "":
                     grbDetail.Enabled = false;
@@ -52,42 +58,37 @@ namespace SmartTest.SystemForm.Subject
         private void Subject_Load(object sender, EventArgs e)
         {
             this.Height = 266;
-            var data = da.ExecuteAsDataReaderSql("SELECT MaMon, TenMon, GhiChu FROM DANHSACHMONTHI", null);
+            ViewMode();
+            LoadData();
+        }
 
+        private void LoadData(string str = "")
+        {
+            string vMaSo = MaSo;
+            string sql = "SELECT MaMon, TenMon FROM [DANHSACHMONTHI]" + str + "WHERE Khoa ='" + vMaSo + "'";
             try
             {
-                if (data != null && data.HasRows)
-                {
-                    List<Class_Subject> sj = new List<Class_Subject>();
-                    while (data.Read())
-                    {
-                        sj.Add(new Class_Subject
-                        {
-                            MaMon = data["MaMon"] + string.Empty,
-                            TenMon = data["TenMon"] + string.Empty,
-                            GhiChu = data["GhiChu"] + string.Empty,
-                        });
-                    }
-                    dtgrvSubject.DataBindings.Clear();
-                    dtgrvSubject.AutoGenerateColumns = false;
-                    dtgrvSubject.DataSource = sj;
-                }
+                dt = da.ExecuteAsDataSetSql(sql);
             }
-            catch (Exception es)
+            catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi" + es.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Có lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt.Tables[0];
+            dtgrvSubject.DataSource = bsource;
         }
 
         private void AddNew()
         {
             try
             {
+                string vMaKhoa = MaSo;
                 Class_Subject sj = new Class_Subject
                 {
                     MaMon = txtSubjectID.Text.Trim(),
                     TenMon = txtSubjectName.Text.Trim(),
-                    GhiChu = txtNote.Text.Trim()
+                    Khoa = txtKhoa.Text.Trim()
                 };
 
                 int result = da.ExecuteData(sj.ToInsertQuery(), sj.ToParameters());
@@ -96,10 +97,10 @@ namespace SmartTest.SystemForm.Subject
                     MessageBox.Show("Success");
                     ButtonClick = "";
                     ViewMode();
+                    LoadData();
                 }
                 else MessageBox.Show("Failed");
 
-                Subject_Load(null, null);
             }
             catch (Exception ex)
             {
@@ -127,7 +128,7 @@ namespace SmartTest.SystemForm.Subject
                 {
                     MaMon = txtSubjectID.Text,
                     TenMon = txtSubjectName.Text,
-                    GhiChu = txtNote.Text
+                    Khoa = txtKhoa.Text
                 };
                 int result = da.ExecuteData(sj.ToUpdateQuery(), sj.ToParameters());
                 if (result > 0)
@@ -135,10 +136,10 @@ namespace SmartTest.SystemForm.Subject
                     MessageBox.Show("Success");
                     ButtonClick = "";
                     ViewMode();
+                    LoadData();
                 }
                 else MessageBox.Show("Failed");
-
-                Subject_Load(null, null);
+                
             }
             catch (Exception ex)
             {
@@ -197,6 +198,22 @@ namespace SmartTest.SystemForm.Subject
                     btFind.Enabled = true;
                     break;
                 case "Tìm":
+                    String vFilter = " Where (1=1)";
+                    if (txtSubjectID.Text != "")
+                    {
+                        vFilter = vFilter + " and MaMon like'%" + txtSubjectID.Text + "%'";
+                    }
+                    if (txtSubjectName.Text != "")
+                    {
+                        vFilter = vFilter + " and TenMon like'%" + txtSubjectName.Text + "%'";
+                    }
+                    LoadData(vFilter);
+                    ButtonClick = "";
+                    ViewMode();
+                    btAdd.Enabled = true;
+                    btDelete.Enabled = true;
+                    btEdit.Enabled = true;
+                    btFind.Enabled = true;
                     break;
                 default:
                     break;
@@ -205,9 +222,27 @@ namespace SmartTest.SystemForm.Subject
 
         private void btPrint_Click(object sender, EventArgs e)
         {
-            SmartTest.SystemForm.SUBJECT.ReportSubject rpsj = new SUBJECT.ReportSubject();
-            rpsj.ShowDialog();
+            new frmReportViewer(new ReportListSubject()).ShowDialog();
+        }
 
+
+        private void btFind_Click(object sender, EventArgs e)
+        {
+            grbDetail.Visible = true;
+            btAdd.Enabled = false;
+            btDelete.Enabled = false;
+            btEdit.Enabled = false;
+            btFind.Enabled = false;
+            btPrint.Enabled = true;
+            ButtonClick = "Tìm";
+            ViewMode();
+        }
+
+        private void btStaff_Click(object sender, EventArgs e)
+        {
+            FormCBCT cb = new FormCBCT();
+            cb.MaSo = dtgrvSubject.CurrentRow.Cells[0].Value.ToString();
+            cb.ShowDialog();
         }
     }
 }

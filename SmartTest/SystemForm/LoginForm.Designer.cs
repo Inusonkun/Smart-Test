@@ -94,6 +94,7 @@
             this.txtPass.Size = new System.Drawing.Size(135, 20);
             this.txtPass.TabIndex = 5;
             this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
             // 
             // lbPassword
             // 
@@ -128,6 +129,7 @@
             this.Controls.Add(this.btLogin);
             this.Controls.Add(this.pictureBox1);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

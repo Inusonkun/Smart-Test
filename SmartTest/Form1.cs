@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SmartTest.SystemForm;
 using SmartTest.SO;
+using SmartTest.SystemForm.CLASS;
+using SmartTest.UserForm;
+using SmartTest.SystemForm.STAFF;
 
 namespace SmartTest
 {
@@ -51,7 +54,6 @@ namespace SmartTest
         }
 
 
-
         private void Main_Load(object sender, EventArgs e)
         {
             foreach (Control ctrl in this.Controls)
@@ -63,46 +65,57 @@ namespace SmartTest
                 }
             }
 
-            MyApp.gConnected = false;
-            //truyền đối tượng This (frmMain) cho class PhanQuyen
-            SmartTest.SO.PhanQuyen.frmmain = this;
-            //gọi HideAll để ẩn menu trong class PhanQUyen
-            SmartTest.SO.PhanQuyen.HideAll();
+            //MyApp.gConnected = false;
+            ////truyền đối tượng This (frmMain) cho class PhanQuyen
+            //SmartTest.SO.PhanQuyen.frmmain = this;
+            ////gọi HideAll để ẩn menu trong class PhanQUyen
+            //SmartTest.SO.PhanQuyen.HideAll();
             //
             //gọi form kết nối
 
-            if (!MyApp.gConnected)
-            {
-                LoginForm digForm = new LoginForm();
-                digForm.ShowDialog();
-            }
-
-
+            //if (!MyApp.gConnected)
+            //{
+            //    LoginForm digForm = new LoginForm();
+            //    digForm.ShowDialog();
+            //}
         }
 
         private void DSLop_Click(object sender, EventArgs e)
         {
-            ListClassForm frm = new ListClassForm();
-            frm.Show();
-            this.Hide();
+            ClassList frm = new ClassList();
+            frm.ShowDialog();
         }
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            ExitForm frm = new ExitForm();
-            frm.Show();
+            if(MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void DSUser_Click(object sender, EventArgs e)
         {
-            UserAccount frm = new UserAccount();
-            frm.Show();
+            frmUsers frm = new frmUsers();
+            frm.ShowDialog();
         }
 
         private void DSSV_Click(object sender, EventArgs e)
         {
             ListStudentForm frm = new ListStudentForm();
             frm.ShowDialog();
+        }
+
+        private void DSKhoaMon_Click(object sender, EventArgs e)
+        {
+            DSKhoaForm frm = new DSKhoaForm();
+            frm.ShowDialog();
+        }
+
+        private void DMCanBo_Click(object sender, EventArgs e)
+        {
+            StaffForm sf = new StaffForm();
+            sf.ShowDialog();
         }
     }
 }

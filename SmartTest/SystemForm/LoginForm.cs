@@ -22,9 +22,10 @@ namespace SmartTest.SystemForm
 
         private void btCancel_Click(object sender, EventArgs e)
         {
-            ExitForm frm = new ExitForm();
-            frm.ShowDialog();
-            this.Hide();
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -33,30 +34,30 @@ namespace SmartTest.SystemForm
         }
 
         #region login method
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            //Thực hiện đăng nhập vào ứng Demo với thông tin trên
-            string loginApp = Login.LoginApp(
-                MyApp.gHostDB, MyApp.gPortDB, MyApp.gServiceNameDB, txtUser.Text, txtPass.Text,
-                txtUser.Text, txtPass.Text);
-            if (loginApp.Equals("true"))
-            {
-                MyApp.gConnected = true;
-                MyApp.gUserDB = txtUser.Text;
-                //FrmLogin.Current.ItemMnuSystemLoginChange = "Đăng xuất";
-                //Goi phan quyen o day
-                SmartTest.SO.PhanQuyen.ShowAll();
-                //close form
-                this.Close();
-            }
-            else
-            {
-                //e.Result = string.Format("Đăng nhập vào {0} không thành công. Bạn hãy kiểm tra lại các thông tin đăng nhập.\r\n{1}", MyApp.gAppCoded, loginApp);
-                string mMessage;
-                mMessage = string.Format("Đăng nhập vào {0} không thành công. Bạn hãy kiểm tra lại các thông tin đăng nhập.\r\n{1}", MyApp.gHostDB, loginApp);
-                MessageBox.Show(mMessage);
-            }
-        }
+        //private void btnLogin_Click(object sender, EventArgs e)
+        //{
+        //    //Thực hiện đăng nhập vào ứng Demo với thông tin trên
+        //    string loginApp = Login.LoginApp(
+        //        MyApp.gHostDB, MyApp.gPortDB, MyApp.gServiceNameDB, txtUser.Text, txtPass.Text,
+        //        txtUser.Text, txtPass.Text);
+        //    if (loginApp.Equals("true"))
+        //    {
+        //        MyApp.gConnected = true;
+        //        MyApp.gUserDB = txtUser.Text;
+        //        //FrmLogin.Current.ItemMnuSystemLoginChange = "Đăng xuất";
+        //        //Goi phan quyen o day
+        //        SmartTest.SO.PhanQuyen.ShowAll();
+        //        //close form
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        //e.Result = string.Format("Đăng nhập vào {0} không thành công. Bạn hãy kiểm tra lại các thông tin đăng nhập.\r\n{1}", MyApp.gAppCoded, loginApp);
+        //        string mMessage;
+        //        mMessage = string.Format("Đăng nhập vào {0} không thành công. Bạn hãy kiểm tra lại các thông tin đăng nhập.\r\n{1}", MyApp.gHostDB, loginApp);
+        //        MessageBox.Show(mMessage);
+        //    }
+        //}
         #endregion
 
         private void txtPassword_Enter(object sender, EventArgs e)
@@ -75,9 +76,10 @@ namespace SmartTest.SystemForm
            
             string ketqua;
             ketqua = Login.DangNhap(txtUser.Text, txtPass.Text);
-            if (ketqua == "Ngon")
+            if (ketqua == "Tốt")
             {
-                PhanQuyen.ShowAll();
+                //PhanQuyen.ShowAll();
+                DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
             else
@@ -85,6 +87,14 @@ namespace SmartTest.SystemForm
                 MessageBox.Show(ketqua, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btLogin_Click(sender, e);
+            }
         }
     }
 }
